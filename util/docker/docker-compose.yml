@@ -1,0 +1,17 @@
+version: '3'
+services:
+  httpd:
+    build: httpd/
+    ports:
+      "8080:80"
+    volumes:
+      /home/noah/Documents/capstone/project/Who-wants-to-be-a-cyber-millionaire:/usr/local/apache2/htdocs
+
+  mysql:
+    build: mysql/
+    ports:
+      "3306:3306"
+    volumes:
+      /test/example/db:/dir/to/db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
