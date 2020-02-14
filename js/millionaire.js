@@ -167,7 +167,7 @@ var MillionaireModel = function(data) {
 // the start game functionality to trigger a game model
 // being created
 $(document).ready(function() {
-	$.getJSON("questions.json", function(data) {
+	$.getJSON("College.json", function(data) {
 		for(var i = 1; i <= data.games.length; i++) {
 			$("#problem-set").append('<option value="' + i + '">' + i + '</option>');
 		}
