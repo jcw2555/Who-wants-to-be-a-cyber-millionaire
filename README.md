@@ -1,15 +1,16 @@
+# Description
+
+Welcome to our project, Who Wants to Be a Cyber Millionaire. The goal of our project is to provide cybersecurity education
+ while presenting it in a fun platform, accessible to all audiences. The game play just like the popular game show Who Wants to Be a Millionaire; You will answer increasing more challenging questions until you either lose or win it all! Our game provides 4 different difficulty levels depending on educational background: K-8th Grade, High School, College+, and College+ Technical Background. We hope you enjoy our game!
+ 
+Special thank you to aaronech, whose project was refactored to fit our needs. His project can be found here: https://github.com/aaronnech/Who-Wants-to-Be-a-Millionaire
 # Usage
 
-To "install" this game, you will need a simple webserver that can serve static files (Apache will do). You simply upload this git repository into a folder on the web server, and access index.html in your browser.
+This game uses mysql to house the question bank, python's flask library to host the web server, and HTML and Javascript for the web application itself.
 
+Before running the game, you must make sure you set up the proper mysql database and that it can communicate with export.py. export.py is the script which will query the database and generate a JSON file depending on which level the user chooses. Our team plans on developing a bash script to install all dependencies and set up the mysql database properly at later stages of the project.
 
-The game loads a question bank (default questions.json) in the same root directory as index.html. This file contains the game-seperated question sets described in the next section.
-
-# Scraping / Question bank
-
-To make question harvesting easier, I included a python script in /util that scrapes indiabix.com for questions.
-
-The root directory has questions.json which is the main question file, and another question set stored in questions2.json. The program only reads questions.json.
+To run the game, simply execute the command: python ajax_test.py and then navigate to http:127.0.0.1:5000 on your browser. From here, select the difficulty you wish to play on and then press start!
 
 # Question format
 
@@ -49,3 +50,5 @@ Each array of questions is in the following format.
 # Who Wants to Be a Millionaire Materials
 
 The sounds and images used from Who Wants to Be a Millionaire, and the questions used from India-Bix and other sources are not mine, nor do I claim any involvement in their creation. The materials are used under Fair Use for academic and educational purpose, and should not be redistributed otherwise without permission from their creators.
+
+
