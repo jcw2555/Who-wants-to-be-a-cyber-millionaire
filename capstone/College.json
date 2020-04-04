@@ -1,0 +1,336 @@
+{
+	"games": [{
+		"questions": [{
+				"question": "Why is backing up data files important?",
+				"content": [
+					"If the information is damaged it can be recovered",
+					"In case you forget where files are located",
+					"To secure documents",
+					"To prevent documents from being stolen"
+				],
+				"correct": 0
+			},
+			{
+				"question": "When constructing a password you should",
+				"content": [
+					"Use your family member name, sports name, pet name and add a number on the end",
+					"Use phrases or misspelled words with embedded numbers and special characters",
+					"Use a sequence of letters and numbers from your keyboard such as QWERTY",
+					"All of the above"
+				],
+				"correct": 1
+			},
+			{
+				"question": "Which of the following is an example of a phishing attack",
+				"content": [
+					"Sending an email with a malicious link that seems like its originating from a friend or coworker",
+					"Creating a fake website identical to a real website in order to trick users into entering credentials",
+					"Sending a text with a malicious stating that you won a contest",
+					"All of the above"
+				],
+				"correct": 3
+			},
+			{
+				"question": "What does the https:// at the beginning of a URL denote, as opposed to http:// (without the s)?",
+				"content": [
+					"The site is not available from certain computers",
+					"The information entered into the site is encrypted",
+					"The site is up to date",
+					"The site is safe"
+				],
+				"correct": 1
+			},
+			{
+				"question": "A group of computers which are controlled remotely for malicious purposes are called",
+				"content": [
+					"Rootkit",
+					"Denial of Service",
+					"Operating System",
+					"Botnet"
+				],
+				"correct": 3
+			},
+			{
+				"question": "Which of the following is an example of two-factor or two-step authentication",
+				"content": [
+					"One time code sent to email or phone",
+					"Completing a captcha",
+					"Entering your password",
+					"Staying logged in"
+				],
+				"correct": 0
+			},
+			{
+				"question": "Which of the following is most secure",
+				"content": [
+					"Boat1234",
+					"WhenTh!58Z",
+					"into*48",
+					"12345"
+				],
+				"correct": 1
+			},
+			{
+				"question": "What is it called when a computer’s files are encrypted by a malicious program?",
+				"content": [
+					"Malware",
+					"A virus",
+					"Ransomware",
+					"Spam"
+				],
+				"correct": 2
+			},
+			{
+				"question": "What feature does private browsing (Incognito mode) offer?",
+				"content": [
+					"our Internet Service Provider cannot see your searches",
+					"A VPN",
+					"It does not store cookies nor history",
+					"It makes your connection secure"
+				],
+				"correct": 2
+			},
+			{
+				"question": "What does a VPN do?",
+				"content": [
+					"Bypass location restrictions",
+					"Protects your traffic from people snooping on the network",
+					"Provides some anonymity",
+					"All of these"
+				],
+				"correct": 3
+			},
+			{
+				"question": "All of the following are considered threats except:",
+				"content": [
+					"Hacker",
+					"Virus",
+					"Worm",
+					"Spam"
+				],
+				"correct": 3
+			},
+			{
+				"question": "Which of the following monitors and forwards activities and habits on the internet to someone else?",
+				"content": [
+					"Malware",
+					"Spyware",
+					"Virus",
+					"Adware"
+				],
+				"correct": 1
+			},
+			{
+				"question": "Which of the following allows a website to store information about a user on their computer?",
+				"content": [
+					"Malware",
+					"Phishing",
+					"Cookies",
+					"Adware"
+				],
+				"correct": 2
+			},
+			{
+				"question": "Which of the following principles is violated if a computer system is not accessible?",
+				"content": [
+					"Confidentiality",
+					"Integrity",
+					"Authentication",
+					"Availability"
+				],
+				"correct": 3
+			},
+			{
+				"question": "Which of the following allows a website to store information about a user on their computer?",
+				"content": [
+					"Malware",
+					"Phishing",
+					"Cookies",
+					"Adware"
+				],
+				"correct": 2
+			},
+			{
+				"question": "A virus is a _______ issue:",
+				"content": [
+					"Security",
+					"Reliability",
+					"Performance",
+					"None of the above"
+				],
+				"correct": 0
+			},
+			{
+				"question": "Which of the following allows a website to store information about a user on their computer?",
+				"content": [
+					"Malware",
+					"Phishing",
+					"Cookies",
+					"Adware"
+				],
+				"correct": 2
+			},
+			{
+				"question": "What is Malware?",
+				"content": [
+					"A virus or worm",
+					"A hacker tool",
+					"A corrupted program",
+					"Security software"
+				],
+				"correct": 0
+			},
+			{
+				"question": "A program that collects sensitive information, disrupts computer use, or gains unauthorized access is called:",
+				"content": [
+					"Ransomware",
+					"Malware",
+					"Spyware",
+					"Adware"
+				],
+				"correct": 1
+			},
+			{
+				"question": "Malware that restrict access to files or the entire computer system until the user performs a requested action is called:",
+				"content": [
+					"Malware",
+					"Ransomware",
+					"Spyware",
+					"Grayware"
+				],
+				"correct": 1
+			},
+			{
+				"question": "A standalone malicious computer program that automatically propagates over a network is called?",
+				"content": [
+					"Trojan horse",
+					"Worm",
+					"Spam",
+					"Ransomeware"
+				],
+				"correct": 1
+			},
+			{
+				"question": "What is adware?",
+				"content": [
+					"Unsolicited electronic messages",
+					"Malicious program that spreads throughout a network automatically",
+					"Software that displays ads",
+					"Malicious information that collects info about users without their knowledge"
+				],
+				"correct": 2
+			},
+			{
+				"question": "Malicious software that collects info about users without their knowledge is called:",
+				"content": [
+					"Adware",
+					"Spyware",
+					"Trojan Horse",
+					"Ransomeware"
+				],
+				"correct": 1
+			},
+			{
+				"question": "A host that has been infected by malware which is controlled remotely is called a:",
+				"content": [
+					"Trojan horse",
+					"Worm",
+					"Honeypot",
+					"Bot"
+				],
+				"correct": 3
+			},
+			{
+				"question": "Which of the following terms corresponds to a collection of compromised systems that together perform a denial of service attack?",
+				"content": [
+					"Botnot",
+					"Honeynet",
+					"Quarantine network",
+					"Malware"
+				],
+				"correct": 0
+			},
+			{
+				"question": "The process of obtaining sensitive information by manipulating people into disclosing it is called:",
+				"content": [
+					"Shoulder surfing",
+					"Penetration testing",
+					"Privilege escalation",
+					"Social Engineering"
+				],
+				"correct": 3
+			},
+			{
+				"question": "A social engineering technique where attackers attempt to gain sensitive information about a target while attempting to disguise themselves as a legitimate source is called:",
+				"content": [
+					"Privilege escalation",
+					"Phishing",
+					"Backdoor access",
+					"Shoulder surfing"
+				],
+				"correct": 1
+			},
+			{
+				"question": "Phishing scams targeting a specific group of people is called:",
+				"content": [
+					"Spoofing",
+					"Vishing",
+					"Spear phishing",
+					"Whaling"
+				],
+				"correct": 2
+			},
+			{
+				"question": "A phishing attack that targets people holding high level positions is called:",
+				"content": [
+					"Vishing",
+					"Whaling",
+					"Pharming",
+					"Bluejacking"
+				],
+				"correct": 1
+			},
+			{
+				"question": "The practice of using a telephone system to manipulate a user into sending personal information is called:",
+				"content": [
+					"Pharming",
+					"Spear phishing",
+					"Vishing",
+					"Whaling"
+				],
+				"correct": 2
+			},
+			{
+				"question": "Which of the following is a social engineering attack that relies on identity theft?",
+				"content": [
+					"Impersonation",
+					"Dumpster diving",
+					"Watering hole attack",
+					"Shoulder surfing"
+				],
+				"correct": 0
+			},
+			{
+				"question": "Which of the following entails sorting through trash and discarded documents for sensitive documents or hardware?",
+				"content": [
+					"Phishing",
+					"Whaling",
+					"Pharming",
+					"Dumpster diving"
+				],
+				"correct": 3
+			},
+			{
+				"question": "Which of the following entails gaining sensitive knowledge by looking at someones computer or keyboard while they enter credentials",
+				"content": [
+					"Shoulder surfing",
+					"Tailgating",
+					"Spoofing",
+					"Spear Phishing"
+				],
+				"correct": 0
+			}
+		]
+	}
+ ]
+}
