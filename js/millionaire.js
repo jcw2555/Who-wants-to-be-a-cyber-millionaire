@@ -127,7 +127,7 @@ var MillionaireModel = function(data) {
  				self.money($(".active").data('amt'));
  				if(self.level() + 1 > 15) {
 	 				$("#game").fadeOut('slow', function() {
-	 					$("#game-over").html('You Win!');
+	 					$("#game-over").html('You Win!<br /><button onclick=\"window.location.replace(\'/\')\">Play again?</button>');
 	 					$("#game-over").fadeIn('slow');
 	 				});
  				} else {
@@ -149,7 +149,7 @@ var MillionaireModel = function(data) {
  			startSound('wrongsound', false);
  			$("#" + elm).css('background', 'red').slideDown('slow', function() {
  				$("#game").fadeOut('slow', function() {
- 					$("#game-over").html('Game Over!');
+					 $("#game-over").html('Game Over!<br /><button onclick=\"window.location.replace(\'/\')\">Play again?</button>');
  					$("#game-over").fadeIn('slow');
  					self.transitioning = false;
  				});
@@ -167,18 +167,30 @@ var MillionaireModel = function(data) {
 // the start game functionality to trigger a game model
 // being created
 $(document).ready(function() {
-	$.getJSON("College.json", function(data) {
-		for(var i = 1; i <= data.games.length; i++) {
-			$("#problem-set").append('<option value="' + i + '">' + i + '</option>');
-		}
-		$("#pre-start").show();
-		$("#start").click(function() {
+	$("#pre-start").show();
+
+	//start function
+	$("#start").click(function() {
+		console.log("the click worked")
+		
+		$.getJSON("nothntochere/millionaire.json", function(data) {
+			console.log(data)
+			for(var i = 1; i <= data.games.length; i++) {
+				console.log(i)
+				$("#problem-set").append('<option value="' + i + '">' + i + '</option>');
+			}
 			var index = $('#problem-set').find(":selected").val() - 1;
-			ko.applyBindings(new MillionaireModel(data.games[index]));
-			$("#pre-start").fadeOut('slow', function() {
-				startSound('background', true);
-				$("#game").fadeIn('slow');
-			});
+			
+			console.log("index", index)
+			console.log(data.games[index])
+			ko.applyBindings(new MillionaireModel(data.games[0]));
 		});
+
+		$("#pre-start").fadeOut('slow', function() {
+
+			startSound('background', true);
+			$("#game").fadeIn('slow');
+		});
+		//end start function
 	});
 });
