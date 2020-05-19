@@ -43,27 +43,27 @@ def generate_json(game):
         for i in range(len(question)):
             # Need to include "questions" around the individual question
             if i == 0:
-                print("Question: " + question[i])
+                #print("Question: " + question[i])
                 quest_json = question[i]
             #Print "content" here before answers
             # Surround answers with [],
             if i == 1:
-                print("Ans1: " + question[i])    
+                #print("Ans1: " + question[i])    
                 ans1_json = question[i]
             if i == 2:
-                print("Ans2: " + question[i])    
+                #print("Ans2: " + question[i])    
                 ans2_json = question[i]
             if i == 3:
-                print("Ans3: " + question[i])    
+                #print("Ans3: " + question[i])    
                 ans3_json = question[i]
             if i == 4:
-                print("Ans4: " + question[i])    
+                #print("Ans4: " + question[i])    
                 ans4_json = question[i]
             if i == 5:
-                print("Correct: " + str(question[i]))    
+                #print("Correct: " + str(question[i]))    
                 correct_json = question[i]
                      
-            print("\n")
+            #print("\n")
             
         #create content array
         content = []
@@ -80,7 +80,7 @@ def generate_json(game):
         })
     json_file['games'].append({"questions" : questions})
 
-    with open('test.json','w') as outfile:
+    with open('nothntochere/millionaire.json','w') as outfile:
         json.dump(json_file, outfile)
 
 """ 
@@ -123,7 +123,7 @@ def K_8th(cursor):
     game = []
 
     # Gets the 5 Tier 1 questions for the K-8th game
-    sql_K_8th_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 1 ORDER BY rand() LIMIT 5;"
+    sql_K_8th_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 1 ORDER BY rand() LIMIT 5;"
     result = run_sql(cursor, sql_K_8th_T1)
     for row in result:
         game.append(row)
@@ -131,36 +131,36 @@ def K_8th(cursor):
     #save everything as variables
         
     # Gets the 5 Tier 2 questions for the K-8th game
-    sql_K_8th_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 2 ORDER BY rand() LIMIT 5;"
+    sql_K_8th_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 2 ORDER BY rand() LIMIT 5;"
     result = run_sql(cursor, sql_K_8th_T2)
     #save everything as variables
     for row in result:
         game.append(row)
 
     # Gets the 3 Tier 3 questions for the K-8th game
-    sql_K_8th_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 3 ORDER BY rand() LIMIT 3;"
+    sql_K_8th_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 3 ORDER BY rand() LIMIT 3;"
     result = run_sql(cursor, sql_K_8th_T3)
     #save everything as variables
     for row in result:
         game.append(row)
 
     # Gets the 1 Tier 4 question for the K-8th game
-    sql_K_8th_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 4 ORDER BY rand() LIMIT 1;"
+    sql_K_8th_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 4 ORDER BY rand() LIMIT 1;"
     result = run_sql(cursor, sql_K_8th_T4)
     #save everything as variables
     for row in result:
         game.append(row)
 
     # Gets the 1 Tier 5 question for the K-8th game
-    sql_K_8th_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 5 ORDER BY rand() LIMIT 1;"
+    sql_K_8th_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 5 ORDER BY rand() LIMIT 1;"
     result = run_sql(cursor, sql_K_8th_T5)
     #save everything as variables
     for row in result:
         game.append(row)
 
-    #remove this print later, just using for test_formating now
-    print("K-8th Selected!")
-    print(game)
+    #remove this print later, just using for millionaireing now
+    #print("K-8th Selected!")
+    #print(game)
 
     return game
     #TODO: Run method for JSON creation/formatting here
@@ -173,43 +173,43 @@ def HighSchool(cursor):
     game = []
 
     # Gets the 5 Tier 1 questions for the High School game
-    sql_HS_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 6 ORDER BY rand() LIMIT 5;"
+    sql_HS_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 6 ORDER BY rand() LIMIT 5;"
     result = run_sql(cursor, sql_HS_T1)
     #save everything as variables 
     for row in result:
         game.append(row)
 
     # Gets the 5 Tier 2 questions for the High School game
-    sql_HS_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 7 ORDER BY rand() LIMIT 5;"
+    sql_HS_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 7 ORDER BY rand() LIMIT 5;"
     result = run_sql(cursor, sql_HS_T2)
     #save everything as variables 
     for row in result:
         game.append(row)
 
     # Gets the 3 Tier 3 questions for the High School game
-    sql_HS_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 8 ORDER BY rand() LIMIT 3;"
+    sql_HS_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 8 ORDER BY rand() LIMIT 3;"
     result = run_sql(cursor, sql_HS_T3)
     #save everything as variables 
     for row in result:
         game.append(row)
 
     # Gets the 1 Tier 4 question for the High School game
-    sql_HS_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 9 ORDER BY rand() LIMIT 1;"
+    sql_HS_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 9 ORDER BY rand() LIMIT 1;"
     result = run_sql(cursor, sql_HS_T4)
     #save everything as variables 
     for row in result:
         game.append(row)
 
     # Gets the 1 Tier 5 question for the High School game
-    sql_HS_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 10 ORDER BY rand() LIMIT 1;"
+    sql_HS_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 10 ORDER BY rand() LIMIT 1;"
     result = run_sql(cursor, sql_HS_T5)
     #save everything as variables 
     for row in result:
         game.append(row)
 
     #remove this print later, just using for testing now
-    print("High School Selected!")
-    print(game)
+    #print("High School Selected!")
+    #print(game)
 
     return game
 
@@ -222,7 +222,7 @@ def College_NonTech(cursor):
     game = []
 
     # Gets the 5 Tier 1 questions for the Non-Technical College game
-    sql_nonTech_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 11 ORDER BY rand() LIMIT 5;"
+    sql_nonTech_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 11 ORDER BY rand() LIMIT 5;"
     result = run_sql(cursor, sql_nonTech_T1)
     #save everything as variables 
     for row in result:
@@ -230,36 +230,36 @@ def College_NonTech(cursor):
 
 
     # Gets the 5 Tier 2 questions for the Non-Technical College game
-    sql_nonTech_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 12 ORDER BY rand() LIMIT 5;"
+    sql_nonTech_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 12 ORDER BY rand() LIMIT 5;"
     result = run_sql(cursor, sql_nonTech_T2)
     #save everything as variables
     for row in result:
         game.append(row)
 
     # Gets the 3 Tier 3 questions for the Non-Technical College game
-    sql_nonTech_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 13 ORDER BY rand() LIMIT 3;"
+    sql_nonTech_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 13 ORDER BY rand() LIMIT 3;"
     result = run_sql(cursor, sql_nonTech_T3)
     #save everything as variables
     for row in result:
         game.append(row)
 
     # Gets the 1 Tier 4 question for the Non-Technical College game
-    sql_nonTech_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 14 ORDER BY rand() LIMIT 1;"
+    sql_nonTech_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 14 ORDER BY rand() LIMIT 1;"
     result = run_sql(cursor, sql_nonTech_T4)
     #save everything as variables
     for row in result:
         game.append(row)
 
     # Gets the 1 Tier 5 question for the Non-Technical College game
-    sql_nonTech_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 15 ORDER BY rand() LIMIT 1;"
+    sql_nonTech_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 15 ORDER BY rand() LIMIT 1;"
     result = run_sql(cursor, sql_nonTech_T5)
     #save everything as variables
     for row in result:
         game.append(row)
 
-    #remove this print later, just using for test_formating now
-    print("College Non-Tech Selected!")
-    print(game)
+    #remove this print later, just using for millionaireing now
+    #print("College Non-Tech Selected!")
+    #print(game)
 
     return game
     #TODO: Run method for JSON creation/formatting here
@@ -271,7 +271,7 @@ def College_Tech(cursor):
     game = []
 
     # Gets the 5 Tier 1 questions for the Technical College game
-    sql_Tech_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 16 ORDER BY rand() LIMIT 5;"
+    sql_Tech_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 16 ORDER BY rand() LIMIT 5;"
     result = run_sql(cursor, sql_Tech_T1)
     #save everything as variables
     for row in result:
@@ -279,57 +279,58 @@ def College_Tech(cursor):
 
 
     # Gets the 5 Tier 2 questions for the Technical College game
-    sql_Tech_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 17 ORDER BY rand() LIMIT 5;"
+    sql_Tech_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 17 ORDER BY rand() LIMIT 5;"
     result = run_sql(cursor, sql_Tech_T2)
     #save everything as variables
     for row in result:
         game.append(row)
 
     # Gets the 3 Tier 3 questions for the Technical College game
-    sql_Tech_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 18 ORDER BY rand() LIMIT 3;"
+    sql_Tech_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 18 ORDER BY rand() LIMIT 3;"
     result = run_sql(cursor, sql_Tech_T3)
     #save everything as variables
     for row in result:
         game.append(row)
 
     # Gets the 1 Tier 4 question for the Technical College game
-    sql_Tech_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 19 ORDER BY rand() LIMIT 1;"
+    sql_Tech_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 19 ORDER BY rand() LIMIT 1;"
     result = run_sql(cursor, sql_Tech_T4)
     #save everything as variables
     for row in result:
         game.append(row)
 
     # Gets the 1 Tier 5 question for the Technical College game
-    sql_Tech_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM test_format WHERE Rank = 20 ORDER BY rand() LIMIT 1;"
+    sql_Tech_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 20 ORDER BY rand() LIMIT 1;"
     result = run_sql(cursor, sql_Tech_T5)
     #save everything as variables
     for row in result:
         game.append(row)
 
-    #remove this print later, just using for test_formating now
-    print("College Tech Selected!")
-    print(game)
+    #remove this print later, just using for millionaireing now
+    #print("College Tech Selected!")
+    #print(game)
     return game
 
     #TODO: Run method for JSON creation/formatting here
     #Jump to error processing shit
 
 
-def main():
+#def main():
+def export_questions(selection):
+    # export questions from mysql based on a given level
     game = []
     try:
         connection = mysql.connector.connect(host='localhost',
                                          database='Millionaire',
                                          user='root',
-                                         password='password')
-
+                                         password='mR*0kGfOxX7^HOlJgCwu') 
         cursor = connection.cursor()
     
     except Error as e:
         print("Error reading data from MySQL table", e)
     
     #temporary way of controlling which level we want to select
-    selection = input("Which level would you like to play (1-4)? ")
+    #selection = input("Which level would you like to play (1-4)? ")
     
     if selection == '1':
         game = K_8th(cursor)
@@ -353,4 +354,4 @@ def main():
         cursor.close()
         print("MySQL connection is closed")
 
-main()
+#main()
