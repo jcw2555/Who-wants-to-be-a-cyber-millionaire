@@ -19,8 +19,12 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', views.index),
-    url(r'^start', views.start),
+    url(r'^k-8', views.start1),
+    url(r'^high-school', views.start2),
+    url(r'^college', views.start3),
+    url(r'^college+technical', views.start4),
+    url(r'', views.index),
+    
     ]
 
 
