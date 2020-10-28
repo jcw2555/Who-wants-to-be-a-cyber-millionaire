@@ -15,19 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.shortcuts import reverse
 from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^k-8', views.start1),
-    url(r'^high-school', views.start2),
-    url(r'^college', views.start3),
-    url(r'^college+technical', views.start4),
-    url(r'', views.index),
+    url(r'^k-8', views.start1, name='k8'),  #K-8th
+    url(r'^high-school', views.start2, name='hs'),  #HS
+    url(r'^college', views.start3, name='college'),  #college
+    url(r'^college-tech', views.start4, name='tech'),  #college+ tech
+    url(r'', views.index, name='start-page'),
     
     ]
-
-
-
-
-
