@@ -1,6 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
+<!-- game.html -->
 <html>
     <head>
         
@@ -11,17 +12,6 @@
     </head>
     
     <body>
-            <!--
-            <div id="pre-start" style="display : block">
-                <h1> Press Start To Play!</h1>
-                <button id="start" type="button" value="start">Start!</button>
-            </div>
-            
-            <!--
-            <div id="game-over" style="display: block;">Game Over!<br><button onclick="window.location.replace('/')">Play again?</button>
-            </div>
-            -->
-            
             <div id="game" style="display: none">
                         <div id="top">
                             <!-- <img src="img/logo.jpg" id="logo"> -->
@@ -73,10 +63,23 @@
                     </div>
             </div>
             
-                     
+            <div id="game-over" style="display: none;">Game Over!<br><button onclick="window.location.replace('/')">Play again?</button>
+            </div>
+            
+        <script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
+            
+        <script>
+            var background = "{% static 'sound/background.mpg' %}"
+            var right = "{% static 'sound/right.mpg' %}"
+            var wrong = "{% static 'sound/wrong.mpg' %}"
+            
+            var path = "{% static 'js/millionaire.json' %}"
+            //set path to cybermillionaire/util/millionaire.json
+          
+        </script>
             
         
-        <script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
+        
         <script src="{% static 'js/knockout-3.0.0.js' %}"></script>
         <script src="{% static 'js/millionaire.js' %}"></script>
         
