@@ -37,8 +37,10 @@ startSound = function(id, loop) {
 	
     if(soundHandle == null)
         console.log("Error with Sound : SoundHandler is null")
-    else
+    else {
         soundHandle.play();
+        console.log("Sound works")
+    }
      
     
 }
@@ -103,6 +105,10 @@ var MillionaireModel = function(data) {
  			$("#answer-four").fadeOut('slow');
  		}
  	}
+    
+    /*
+     Put functionaility for Phone a friend and Audience member Here
+     */
 
  	// Fades out an option used if possible
  	self.fadeOutOption = function(item, event) {
@@ -129,7 +135,7 @@ var MillionaireModel = function(data) {
  	// levels have been completed)
  	self.rightAnswer = function(elm) {
  		$("#" + elm).slideUp('slow', function() {
- 			startSound('rightsound', false);
+ 			startSound('right', false);
  			$("#" + elm).css('background', 'green').slideDown('slow', function() {
  				self.money($(".active").data('amt'));
  				if(self.level() + 1 > 15) {
@@ -153,7 +159,7 @@ var MillionaireModel = function(data) {
  	// Executes the proceedure of guessing incorrectly, losing the game.
  	self.wrongAnswer = function(elm) {
  		$("#" + elm).slideUp('slow', function() {
- 			startSound('wrongsound', false);
+ 			startSound('wrong', false);
  			$("#" + elm).css('background', 'red').slideDown('slow', function() {
  				$("#game").fadeOut('slow', function() {
 					 $("#game-over").html('Game Over!<br /><button onclick=\"window.location.replace(\'/\')\">Play again?</button>');
