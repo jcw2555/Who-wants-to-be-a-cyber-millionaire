@@ -33,8 +33,12 @@ startSound = function(id, loop) {
     
 	soundHandle = document.getElementById(id);
 	if(loop)
-		soundHandle.setAttribute('loop', loop);
-	soundHandle.play();
+		soundHandle.setAttribute('loop', loop); ////////////////////////////////////////////////////////////
+	
+    if(soundHandle == null)
+        console.log("Error with Sound : SoundHandler is null")
+    else
+        soundHandle.play();
      
     
 }
@@ -125,7 +129,7 @@ var MillionaireModel = function(data) {
  	// levels have been completed)
  	self.rightAnswer = function(elm) {
  		$("#" + elm).slideUp('slow', function() {
- 			//startSound('rightsound', false);
+ 			startSound('rightsound', false);
  			$("#" + elm).css('background', 'green').slideDown('slow', function() {
  				self.money($(".active").data('amt'));
  				if(self.level() + 1 > 15) {
@@ -149,7 +153,7 @@ var MillionaireModel = function(data) {
  	// Executes the proceedure of guessing incorrectly, losing the game.
  	self.wrongAnswer = function(elm) {
  		$("#" + elm).slideUp('slow', function() {
- 			//startSound('wrongsound', false);
+ 			startSound('wrongsound', false);
  			$("#" + elm).css('background', 'red').slideDown('slow', function() {
  				$("#game").fadeOut('slow', function() {
 					 $("#game-over").html('Game Over!<br /><button onclick=\"window.location.replace(\'/\')\">Play again?</button>');
@@ -166,34 +170,31 @@ var MillionaireModel = function(data) {
 	}
 };
 
+
+
+
 // Executes on page load, bootstrapping
 // the start game functionality to trigger a game model
 // being created
 $(document).ready(function() {
-	//$("#pre-start").show();
-
-	//start function
-	$("#start").show(); //{
-		console.log("the click worked")
-		
-		$.getJSON("cybermillionaire/util/millionaire.json", function(data) {
-			console.log(data)
-			for(var i = 1; i <= data.games.length; i++) {
-				console.log(i)
-				$("#problem-set").append('<option value="' + i + '">' + i + '</option>');
-			}
-			var index = $('#problem-set').find(":selected").val() - 1;
-			
-			console.log("index", index)
-			console.log(data.games[index])
-			ko.applyBindings(new MillionaireModel(data.games[0]));
-		});
-
-		//$("#pre-start").fadeOut('slow', function() {
-
-			//startSound('background', true);
-			$("#game").fadeIn('slow');
-		//});
-		//end start function
-	//});
+    
+    console.log("Ready function worked")
+     
+    $.getJSON(path, function(data) {
+        console.log("getJSON worked")
+        //console.log(data)
+        for(var i = 1; i <= data.games.length; i++) {
+            console.log(i)
+            $("#problem-set").append('<option value="' + i + '">' + i + '</option>');
+        }
+        var index = $('#problem-set').find(":selected").val() - 1;
+        console.log("index", index)
+        console.log(data.games[index])
+        ko.applyBindings(new MillionaireModel(data.games[0]));
+    });
+      
+    startSound('background', false);
+    $("#game").fadeIn('slow');
+        console.log("Game loaded")
+        
 });
