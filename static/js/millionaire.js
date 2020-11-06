@@ -33,7 +33,7 @@ startSound = function(id, loop) {
     
 	soundHandle = document.getElementById(id);
 	if(loop)
-		soundHandle.setAttribute('loop', loop); ////////////////////////////////////////////////////////////
+		soundHandle.setAttribute('loop', loop);
 	
     if(soundHandle == null)
         console.log("Error with Sound : SoundHandler is null")
@@ -107,8 +107,48 @@ var MillionaireModel = function(data) {
  	}
     
     /*
-     Put functionaility for Phone a friend and Audience member Here
+    //Uses the phone a friend option
+    self.friend = function(item, event) {
+        if(self.transitioning)
+            return;
+        $(event.target).fadeOut('slow');
+        var elm = self.getElm(this.questions[self.level() - 1].correct)
+        $(elm).css('background', 'yellow')
+        $(elm).css('color', 'black')
+    }
      */
+
+    //Uses the phone a friend option
+    self.friend = function(item, event) {
+        if(self.transitioning)
+            return;
+        $(event.target).fadeOut('slow');
+        var correct = this.questions[self.level() - 1].correct;
+        
+        if(correct != 0) {
+            $("#answer-one").fadeOut('slow');
+        }
+        if(correct != 1) {
+            $("#answer-two").fadeOut('slow');
+        }
+        if(correct != 2 ) {
+            $("#answer-three").fadeOut('slow');
+        }
+        if(correct != 3) {
+            $("#answer-four").fadeOut('slow');
+        }
+    }
+    
+ 
+    //Uses the audience option
+    self.audience = function(item, event) {
+        if(self.transitioning)
+            return;
+        $(event.target).fadeOut('slow');
+        var elm = self.getElm(this.questions[self.level() - 1].correct)
+        $(elm).css('background', 'yellow')
+        $(elm).css('color', 'black')
+    }
 
  	// Fades out an option used if possible
  	self.fadeOutOption = function(item, event) {
@@ -116,6 +156,7 @@ var MillionaireModel = function(data) {
  			return;
  		$(event.target).fadeOut('slow');
  	}
+
 
  	// Attempts to answer the question with the specified
  	// answer index (0-3) from a click event of elm
@@ -129,6 +170,18 @@ var MillionaireModel = function(data) {
  			self.wrongAnswer(elm);
  		}
  	}
+
+    //match correct answer to element name
+    self.getElm = function(correct){
+        if(correct == 0)
+            return "#answer-one"
+        if(correct == 1)
+            return "#answer-two"
+        if(correct == 2)
+            return "#answer-three"
+        if(correct == 3)
+            return "#answer-four"
+    }
 
  	// Executes the proceedure of a correct answer guess, moving
  	// the player to the next level (or winning the game if all
@@ -188,7 +241,6 @@ $(document).ready(function() {
      
     $.getJSON(path, function(data) {
         console.log("getJSON worked")
-        //console.log(data)
         for(var i = 1; i <= data.games.length; i++) {
             console.log(i)
             $("#problem-set").append('<option value="' + i + '">' + i + '</option>');
