@@ -12,6 +12,11 @@
     </head>
     
     <body>
+        
+        <audio id="background" src="{% static 'sound/background.mp3' %}"></audio>
+        <audio id="right" src="{% static 'sound/right.mp3' %}"></audio>
+        <audio id="wrong" src="{% static 'sound/wrong.mp3' %}"></audio>
+        
             <div id="game" style="display: none">
                         <div id="top">
                             <!-- <img src="img/logo.jpg" id="logo"> -->
@@ -66,7 +71,7 @@
             <div id="game-over" style="display: none;">Game Over!<br><button onclick="window.location.replace('/')">Play again?</button>
             </div>
             
-        <script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
+        
             
         <script>
             var background = "{% static 'sound/background.mpg' %}"
@@ -75,11 +80,10 @@
             
             var path = "{% static 'js/millionaire.json' %}"
             //set path to cybermillionaire/util/millionaire.json
-          
         </script>
             
         
-        
+        <script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
         <script src="{% static 'js/knockout-3.0.0.js' %}"></script>
         <script src="{% static 'js/millionaire.js' %}"></script>
         
