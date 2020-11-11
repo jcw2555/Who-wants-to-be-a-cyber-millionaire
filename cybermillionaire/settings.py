@@ -25,7 +25,10 @@ SECRET_KEY = '(6t%=74jy8n&e^e_5weg7j28$=bwadx)o(65hxk+=f_p9()h28'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '129.21.62.79',
+    'localhost',
+]
 
 
 # Application definition
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'jquery',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '/Users/rynekrueger/Documents/CollegeWork/Cybercorps/CyberMillionaire/millionaire-env/cybermillionaire/cybermillionaire/templates'
+            '/Users/rynekrueger/Documents/CollegeWork/Cybercorps/CyberMillionaire/millionaire-env/cybermillionaire/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -120,6 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'root')
 
-
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+    ]
