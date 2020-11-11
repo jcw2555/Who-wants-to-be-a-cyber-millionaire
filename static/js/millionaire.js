@@ -53,6 +53,7 @@ startSound = function(id, loop) {
 */
 var MillionaireModel = function(data) {
 	var self = this;
+    var audience = -1
 
 	// The 15 questions of this game
     this.questions = data.questions;
@@ -139,15 +140,31 @@ var MillionaireModel = function(data) {
         }
     }
     
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
  
     //Uses the audience option
     self.audience = function(item, event) {
         if(self.transitioning)
             return;
         $(event.target).fadeOut('slow');
+        
+        
+        rand = Math.random()
+        console.log("Random = " + rand)
         var elm = self.getElm(this.questions[self.level() - 1].correct)
-        $(elm).css('background', 'yellow')
-        $(elm).css('color', 'black')
+        if(rand <= .75) {
+            $(elm).css('background', 'orange').slow()
+        }
+        else {
+            var wrongElm = self.getElm(getRandomInt(0, 3))
+            console.log("Wrong Element:" + wrongElm)
+            $(wrongElm).css('background', 'orange').slow()
+        }
+        
     }
 
  	// Fades out an option used if possible
