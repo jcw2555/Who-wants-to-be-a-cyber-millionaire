@@ -119,6 +119,15 @@ audio {
 	text-align: center;
 }
 
+#display-help {
+    color: white;
+    width: 960px;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 1.5em;
+    
+}
+
 #fifty {
 	background: url('../img/50-50.png') no-repeat 0 0;
 }
@@ -130,6 +139,8 @@ audio {
 #audience {
 	background: url('../img/audience.png') no-repeat 0 0;
 }
+
+
 
 #answer-box {
 	color: white;
