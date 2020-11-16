@@ -53,7 +53,7 @@ startSound = function(id, loop) {
 */
 var MillionaireModel = function(data) {
 	var self = this;
-    var audience = -1
+   var help = -1
 
 	// The 15 questions of this game
     this.questions = data.questions;
@@ -107,37 +107,34 @@ var MillionaireModel = function(data) {
  		}
  	}
     
-    /*
-    //Uses the phone a friend option
-    self.friend = function(item, event) {
-        if(self.transitioning)
-            return;
-        $(event.target).fadeOut('slow');
-        var elm = self.getElm(this.questions[self.level() - 1].correct)
-        $(elm).css('background', 'yellow')
-        $(elm).css('color', 'black')
-    }
-     */
-
+    
+    
     //Uses the phone a friend option
     self.friend = function(item, event) {
         if(self.transitioning)
             return;
         $(event.target).fadeOut('slow');
         var correct = this.questions[self.level() - 1].correct;
+        var correctLetter = ""
         
-        if(correct != 0) {
-            $("#answer-one").fadeOut('slow');
+        if(correct == 0) {
+           correctLetter = "A";
         }
-        if(correct != 1) {
-            $("#answer-two").fadeOut('slow');
+        if(correct == 1) {
+            correctLetter = "B";
         }
-        if(correct != 2 ) {
-            $("#answer-three").fadeOut('slow');
+        if(correct == 2 ) {
+            correctLetter = "C";
         }
-        if(correct != 3) {
-            $("#answer-four").fadeOut('slow');
+        if(correct == 3) {
+            correctLetter = "D";
         }
+        
+        help = 1
+        textToDisplay = "The correct answer is " + correctLetter;
+        
+        document.getElementById("display-help").innerHTML = textToDisplay;
+        
     }
     
     function getRandomInt(min, max) {
@@ -155,15 +152,37 @@ var MillionaireModel = function(data) {
         
         rand = Math.random()
         console.log("Random = " + rand)
-        var elm = self.getElm(this.questions[self.level() - 1].correct)
+        var elm = this.questions[self.level() - 1].correct
+        console.log("elm = " + elm)
+        
+        var chosenNum = -1
         if(rand <= .75) {
-            $(elm).css('background', 'orange').slow()
+            chosenNum = elm
         }
         else {
-            var wrongElm = self.getElm(getRandomInt(0, 3))
-            console.log("Wrong Element:" + wrongElm)
-            $(wrongElm).css('background', 'orange').slow()
+            chosenNum = getRandomInt(0, 3)
+            console.log("Wrong Element:" + chosenNum)
         }
+        
+        var correctLetter = "";
+        if(chosenNum == 0) {
+           correctLetter = "A";
+        }
+        if(chosenNum == 1) {
+            correctLetter = "B";
+        }
+        if(chosenNum == 2 ) {
+            correctLetter = "C";
+        }
+        if(chosenNum== 3) {
+            correctLetter = "D";
+        }
+        
+        help = 1
+        console.log("CorrectLetter: " + correctLetter)
+        textToDisplay = "The audience thinks the correct answer is " + correctLetter;
+        
+        document.getElementById("display-help").innerHTML = textToDisplay;
         
     }
 
@@ -181,6 +200,11 @@ var MillionaireModel = function(data) {
  		if(self.transitioning)
  			return;
  		self.transitioning = true;
+        if(help == 1){
+            document.getElementById("display-help").innerHTML = "";
+            help = -1
+        }
+        
  		if(self.questions[self.level() - 1].correct == index) {
  			self.rightAnswer(elm);
  		} else {
