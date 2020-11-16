@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <!-- game.html -->
 <html>
@@ -17,9 +18,10 @@
         <audio id="right" src="{% static 'sound/right.mp3' %}"></audio>
         <audio id="wrong" src="{% static 'sound/wrong.mp3' %}"></audio>
         
+      
+        
             <div id="game" style="display: none">
                         <div id="top">
-                            <!-- <img src="img/logo.jpg" id="logo"> -->
                             <ul id="levels">
                                 <li data-bind="css: {active: level() == 15}" data-amt="1000000" data-lvl="15">$1,000,000</li>
                                 <li data-bind="css: {active: level() == 14}" data-amt="500000" data-lvl="14">$500,000</li>
@@ -46,6 +48,9 @@
                             <div id="audience" class="options-button" data-bind="click: audience"></div>
                             <div id="money">$<span data-bind="text: formatMoney()"></span></div>
                         </div>
+                        
+                        <div id="display-help"></div>
+                        
                     
                         <div id="question-box">
                             <span class="big-text">Q:</span>
@@ -70,6 +75,8 @@
             
             <div id="game-over" style="display: none;">Game Over!<br><button onclick="window.location.replace('/')">Play again?</button>
             </div>
+            
+            
             
         
             
