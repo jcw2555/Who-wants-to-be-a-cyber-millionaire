@@ -1,34 +1,20 @@
 """
-This file runs teh pulltsv.sh script, then access the local mySQL database, then runs import.sql
+This file runs the pulltsv.sh script, verify the data entries. 
 """
+import sys
 import subprocess
 import mysql.connector
+from verifyEntries import main as verify
 
+def main():
+    #Call script to pull down questions
+   subprocess.call("cybermillionaire/util/pulltsv.sh")
 
-#Call script to pull down questions
-#subprocess.call("cybermillionaire/util/pulltsv.sh")
-
-
-
-
-#Opens connection to mysql database
-mydb = mysql.connector.connect(
-    host = "localhost",
-    user = "root",
-    password = "RedBusStopsHere9" #change to local database password
-    )
+    verify()
+    
+    subprocess.call(["cat",  "cybermillionaire/util/susEntries.txt"])
   
-  
-mycursor = mydb.cursor()
-
-"""
-mycursor.execute("show databases;")
-myresult = mycursor.fetchall()
-
-for x in myresult:
-    print(x)
-"""
-mycursor.execute("\. cybermillionaire/util/import.sql", None, multi=False) #path to import.sql
-
-
+    
+    
+main()
 
