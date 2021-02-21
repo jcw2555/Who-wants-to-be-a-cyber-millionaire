@@ -53,7 +53,7 @@ startSound = function(id, loop) {
 */
 var MillionaireModel = function(data) {
 	var self = this;
-   var help = -1
+    var help = -1
 
 	// The 15 questions of this game
     this.questions = data.questions;
@@ -68,7 +68,7 @@ var MillionaireModel = function(data) {
  	// The current level(starting at 1) 
  	this.level = new ko.observable(1);
 
- 	// The three options the user can use to 
+ 	// The three the user can use to 
  	// attempt to answer a question (1 use each)
  	this.usedFifty = new ko.observable(false);
  	this.usedPhone = new ko.observable(false);
@@ -114,26 +114,72 @@ var MillionaireModel = function(data) {
         if(self.transitioning)
             return;
         $(event.target).fadeOut('slow');
+        $("#logo").fadeIn('slow');
         var correct = this.questions[self.level() - 1].correct;
-        var correctLetter = ""
         
-        if(correct == 0) {
-           correctLetter = "A";
-        }
-        if(correct == 1) {
-            correctLetter = "B";
-        }
-        if(correct == 2 ) {
-            correctLetter = "C";
-        }
-        if(correct == 3) {
-            correctLetter = "D";
-        }
+        //Random to decide whether to use 95% or 50/50
+        rand = Math.random()
+        console.log("2 Options random = " + rand)
+        var elm = this.questions[self.level() - 1].correct
+        console.log("elm = " + elm)
         
-        help = 1
-        textToDisplay = "The correct answer is " + correctLetter;
-        
-        document.getElementById("display-help").innerHTML = textToDisplay;
+        //95% correct option
+        if(rand <= .50) {
+            rand = Math.random()
+            console.log("95% Random = " + rand)
+            var elm = this.questions[self.level() - 1].correct
+            console.log("elm = " + elm)
+            
+            var chosenNum = -1
+            if(rand <= .95) {
+                chosenNum = elm
+            }
+            else {
+                chosenNum = getRandomInt(0, 3)
+                console.log("Wrong Element:" + chosenNum)
+            }
+            
+            var correctLetter = "";
+            if(chosenNum == 0) {
+               correctLetter = "A";
+            }
+            if(chosenNum == 1) {
+                correctLetter = "B";
+            }
+            if(chosenNum == 2 ) {
+                correctLetter = "C";
+            }
+            if(chosenNum== 3) {
+                correctLetter = "D";
+            }
+            help = 1
+            textToDisplay = "Your friend thinks the correct answer is " + correctLetter;
+            $("#display-help").fadeIn('slow');
+            document.getElementById("display-help").innerHTML = textToDisplay;
+        }
+        //50/50 option from friend
+        else {
+            var correct = this.questions[self.level() - 1].correct;
+            var first = (correct + 1) % 4;
+            var second = (first + 1) % 4;
+            if(first == 0 || second == 0) {
+                $("#answer-one").fadeOut('slow');
+            }
+            if(first == 1 || second == 1) {
+                $("#answer-two").fadeOut('slow');
+            }
+            if(first == 2 || second == 2) {
+                $("#answer-three").fadeOut('slow');
+            }
+            if(first == 3 || second == 3) {
+                $("#answer-four").fadeOut('slow');
+            }
+            help = 1
+            textToDisplay = "Your friend thinks one of these is the correct answer.";
+            $("#display-help").fadeIn('slow');
+            document.getElementById("display-help").innerHTML = textToDisplay;
+
+        }
         
     }
     
@@ -181,7 +227,7 @@ var MillionaireModel = function(data) {
         help = 1
         console.log("CorrectLetter: " + correctLetter)
         textToDisplay = "The audience thinks the correct answer is " + correctLetter;
-        
+        $("#display-help").fadeIn('slow');
         document.getElementById("display-help").innerHTML = textToDisplay;
         
     }
@@ -201,7 +247,9 @@ var MillionaireModel = function(data) {
  			return;
  		self.transitioning = true;
         if(help == 1){
-            document.getElementById("display-help").innerHTML = "";
+            $("#logo").fadeOut('slow');
+            $("#display-help").fadeOut('slow');
+            //document.getElementById("display-help").innerHTML = "";
             help = -1
         }
         
@@ -230,6 +278,7 @@ var MillionaireModel = function(data) {
  	self.rightAnswer = function(elm) {
  		$("#" + elm).slideUp('slow', function() {
  			startSound('right', false);
+            //$("#display-help").fadeOut('slow');
  			$("#" + elm).css('background', 'green').slideDown('slow', function() {
  				self.money($(".active").data('amt'));
  				if(self.level() + 1 > 15) {
@@ -281,7 +330,7 @@ $(document).ready(function() {
     console.log("Ready function worked")
      
     $.getJSON(path, function(data) {
-        console.log("getJSON worked")
+        console.log("getJSON start")
         for(var i = 1; i <= data.games.length; i++) {
             console.log(i)
             $("#problem-set").append('<option value="' + i + '">' + i + '</option>');
@@ -290,6 +339,7 @@ $(document).ready(function() {
         console.log("index", index)
         console.log(data.games[index])
         ko.applyBindings(new MillionaireModel(data.games[0]));
+        console.log("getJSON finish")
     });
       
     startSound('background', false);
