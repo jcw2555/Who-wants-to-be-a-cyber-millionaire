@@ -1,5 +1,9 @@
 FROM python:2.7.16-alpine
 
+RUN mkdir /cybermillionaire
+
+WORKDIR /cybermillionaire
+
 
 RUN pip install --upgrade pip
 
@@ -8,7 +12,7 @@ RUN pip install -r requirements.txt
 
 COPY ./cybermillionaire /cybermillionaire
 
-WORKDIR /cybermillionaire
+
 
 COPY ./entrypoint.sh /
 ENTRYPOINT ["sh", "/entrypoint.sh"]

@@ -7,21 +7,44 @@ services:
         ports:
             - "8000:8000"
         volumes:
-            - ./cybermillionaire/static:/static
             - ./cybermillionaire:/cybermillionaire
+        networks:
+            - nginx_network
+            - db_network
+        depends_on:
+            - db
         
       
     nginx:
         build: ./nginx
         ports:
-            - 8800:80
+            - "80:80"
         volumes:
             - ./cybermillionaire/static:/static
         depends_on:
             - gunicorn
+        networks:
+            - nginx_network
             
+      
+    db:
+        build: ./mysql
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./cybermillionaire:/cybermillionaire
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: Millionaire
+        networks:
+            - db_network
+        
    
-
+networks:
+    nginx_network:
+        driver: bridge
+    db_network:
+        driver: bridge
 
 
 
