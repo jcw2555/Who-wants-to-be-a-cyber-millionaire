@@ -323,11 +323,11 @@ def export_questions(selection):
     game = []
     try:
     
-        #f = open("cybermillionaire/util/mysqlPassword.txt")
+        f = open("cybermillionaire/util/mysqlPassword.txt")
         connection = mysql.connector.connect(host='db',
                                          database='Millionaire',
                                          user='root',
-                                         password= 'password')
+                                         password= f.read().strip())
         cursor = connection.cursor()
     
     except Error as e:
