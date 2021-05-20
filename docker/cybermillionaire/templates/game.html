@@ -9,7 +9,6 @@
         
         <title>Cyber Millionaire</title>
         <link href="{% static 'css/style.css' %}" rel="stylesheet">
-        
     </head>
     
     <body>
@@ -17,12 +16,12 @@
         <audio id="background" src="{% static 'sound/background.mp3' %}"></audio>
         <audio id="right" src="{% static 'sound/right.mp3' %}"></audio>
         <audio id="wrong" src="{% static 'sound/wrong.mp3' %}"></audio>
-     
+       
       
         
             <div id="game" style="display: none">
                         <div id="top">
-                            <img src = "{% static 'img/phoneCall.gif' %}" id="logo" style="display: none;"></img>
+                            <img src = "{% static 'img/logo2.jpeg' %}" id="logo"></img>
                             <ul id="levels">
                                 <li data-bind="css: {active: level() == 15}" data-amt="1000000" data-lvl="15">$1,000,000</li>
                                 <li data-bind="css: {active: level() == 14}" data-amt="500000" data-lvl="14">$500,000</li>
