@@ -114,7 +114,8 @@ var MillionaireModel = function(data) {
         if(self.transitioning)
             return;
         $(event.target).fadeOut('slow');
-        $("#logo").fadeIn('slow');
+        $("#logo").fadeOut('slow');
+        $("#phoneImage").fadeIn('slow');
         var correct = this.questions[self.level() - 1].correct;
         
         //Random to decide whether to use 95% or 50/50
@@ -123,15 +124,15 @@ var MillionaireModel = function(data) {
         var elm = this.questions[self.level() - 1].correct
         console.log("elm = " + elm)
         
-        //95% correct option
+        //80% correct option
         if(rand <= .50) {
             rand = Math.random()
-            console.log("95% Random = " + rand)
+            console.log("80% Random = " + rand)
             var elm = this.questions[self.level() - 1].correct
             console.log("elm = " + elm)
             
             var chosenNum = -1
-            if(rand <= .95) {
+            if(rand <= .80) {
                 chosenNum = elm
             }
             else {
@@ -247,7 +248,8 @@ var MillionaireModel = function(data) {
  			return;
  		self.transitioning = true;
         if(help == 1){
-            $("#logo").fadeOut('slow');
+            $("#phoneImage").fadeOut('slow');
+            $("logo").fadeIn('slow');
             $("#display-help").fadeOut('slow');
             //document.getElementById("display-help").innerHTML = "";
             help = -1
