@@ -1,0 +1,10 @@
+Instructions to Run Code in Docker:
+
+1. Ensure Docker and Docker-Compose are installed on the machine
+
+2. In the downloaded code from the Django-branch, go to docker directory
+
+3. Use the command: docker-compose up --build -d
+
+4. Once the containers are built, open a browser and navigate to https://localhost
+
