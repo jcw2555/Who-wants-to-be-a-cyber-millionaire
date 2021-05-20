@@ -1,6 +1,7 @@
 body {
 	background: black;
 	font-family: 'Roboto Slab', serif;
+    
 }
 
 h1 {
@@ -104,9 +105,10 @@ audio {
 #logo {
     width: 480;
 	float: left;
-	margin-left: 300px;
-	margin-top: 40px;
+	margin-left: 240px;
+	margin-top: 60px;
 }
+
 
 #game-over {
 	display: none;
