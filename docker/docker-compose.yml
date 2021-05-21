@@ -18,7 +18,7 @@ services:
     nginx:
         build: ./nginx
         ports:
-            - "80:80"
+            - "443:443"
         volumes:
             - ./cybermillionaire/static:/static
         depends_on:
