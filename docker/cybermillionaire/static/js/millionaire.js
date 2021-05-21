@@ -114,7 +114,6 @@ var MillionaireModel = function(data) {
         if(self.transitioning)
             return;
         $(event.target).fadeOut('slow');
-        $("#logo").fadeOut('slow');
         $("#phoneImage").fadeIn('slow');
         var correct = this.questions[self.level() - 1].correct;
         
@@ -249,7 +248,6 @@ var MillionaireModel = function(data) {
  		self.transitioning = true;
         if(help == 1){
             $("#phoneImage").fadeOut('slow');
-            $("logo").fadeIn('slow');
             $("#display-help").fadeOut('slow');
             //document.getElementById("display-help").innerHTML = "";
             help = -1
