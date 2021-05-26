@@ -342,7 +342,7 @@ $(document).ready(function() {
         console.log("getJSON finish")
     });
       
-    startSound('background', false);
+    startSound('background', true);
     $("#game").fadeIn('slow');
         console.log("Game loaded")
         
