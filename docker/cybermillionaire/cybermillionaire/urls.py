@@ -25,6 +25,12 @@ urlpatterns = [
     url(r'^college', views.start3, name='college'),  #college
     url(r'^college-tech', views.start4, name='tech'),  #college+ tech
     url(r'', views.index, name='start-page'),
+
+    # Add dynamic URL patterns
+    url(r'^dynamic-k-8', views.dynamic_start1, name='dynamic-k8'),  # Dynamic K-8th
+    url(r'^dynamic-high-school', views.dynamic_start2, name='dynamic-hs'),  # Dynamic High School
+    url(r'^dynamic-college', views.dynamic_start3, name='dynamic-college'),  # Dynamic College
+    url(r'^dynamic-college-tech', views.dynamic_start4, name='dynamic-tech'),  # Dynamic College + Tech
     
     ]
 
