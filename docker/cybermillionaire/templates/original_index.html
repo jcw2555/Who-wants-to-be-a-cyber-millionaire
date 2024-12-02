@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cyber Millionaire</title>
+        
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        
+        
+    </head>
+    <body>
+        <h1> Welcome To Who Wants To Be A Cyber Millionaire!</h1>
+        <h2> Please Select a Difficulty Level Below</h2>
+        
+        <div class="container">
+            <div class="vertical-center">
+                
+               
+               <input class="btn btn-success" type="button" value="K-8" onclick="location.href='{% url 'k8' %}'"  /><br/>
+               
+               <input class="btn btn-success" type="button" value="High School" onclick="location.href='{% url 'hs' %}'"  /><br/>
+               
+               <input class="btn btn-success" type="button" value="College" onclick="location.href='{% url 'college' %}'"  /><br/>
+            
+                <input class="btn btn-success" type="button" value="College + Technical" onclick="location.href='{% url 'tech' %}'"  /><br/>
+                
+            </div>
+        </div>
+        
+        
+<!--        <h3>If you would like to submit a question, click below.</h3><br/>
+        
+        <div class="container">
+            <div class="vertical-center">
+                <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSd5EEgPZfJ1FoJ7dLSrdg2QGAzPSOpUV9hdifitq1ATo7O5IQ/viewform?usp=sf_link', '_blank')">Submit a Question!</button> <br/>
+            </div>
+        </div>
+-->
+<!--
+	<div class="container">
+            <div class="vertical-center">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+-->
+	<div class="container">
+            <div class="vertical-center">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+    </body>
+</html>
