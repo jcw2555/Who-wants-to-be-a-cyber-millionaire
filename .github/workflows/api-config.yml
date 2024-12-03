@@ -1,0 +1,25 @@
+name: Deploy Docker Compose Environment
+
+on:
+  push:
+    branches:
+      - Django-branch  # Trigger on Django-branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Docker (if not already set up)
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v2
+
+    # Step 3: Build and run Docker Compose, injecting secret
+    - name: Build and run services with Docker Compose
+      run: |
+        OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+        sudo docker-compose up -d
