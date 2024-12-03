@@ -3,7 +3,7 @@ from mysql.connector import Error
 import json
 import sys
 import cybermillionaire.dynamic_question_generation as generation
-import cybermillionaire.database_insert
+import cybermillionaire.database_insert as insert
 
 # Executes all export functionality
 #class Export:
@@ -246,26 +246,49 @@ def Dynamic_K_8th(cursor):
    # for i in range(0, 15):
     #    question_text = generation.generate_question("easy")
         # Parse the text and insert it into the database
-    question_text1 = generation.generate_question("easy")
 
-    question_text = """
-    Question: Which of the following is a strong password?
+    
+    question_text = generation.generate_question("easy")
 
-    A. Password123
-    B. 123456
-    C. SunnyDay!
-    D. ABCDEFG
+    print(question_text)
 
-    Correct Answer: A. Password123
-    """
+    # question_text = """
+    # Question: Which of the following is a strong password?
+
+    # A. Password123
+    # B. 123456
+    # C. SunnyDay!
+    # D. ABCDEFG
+
+    # Correct Answer: A. Password123
+    # """
+
+
+    # Redirect stdout to a file
+    sys.stdout = open('temp_test.txt', 'w')
 
     try:
-        #question, answers, correct_answer = parse_question_and_answers(question_text)
-        question, answers, correct_answer = ('Which of the following is a strong password?',['Password123', '123456', 'SunnyDay!', 'ABCDEFG', 'Password123'], 0)
-        insert_question_into_db(question, answers, correct_answer)
+        print("Attempting to parse question and answers...")
+        question, answers, correct_answer = insert.parse_question_and_answers(question_text)
+        print("Question and answers parsed successfully.")
+        
+        print("Attempting to insert question into database...")
+        insert.insert_question_into_db(question, answers, correct_answer)
+        
         print("Question inserted successfully!")
     except Exception as e:
-        print("An error occurred: " + str(e))
+        print(f"An error occurred: {e}")
+
+    # Optionally, restore stdout to the default (console) after the operation
+    sys.stdout = sys.__stdout__
+
+    # try:
+    #     question, answers, correct_answer = parse_question_and_answers(question_text)
+    #     #question, answers, correct_answer = ('Which of the following is a strong password?',['Password123', '123456', 'SunnyDay!', 'ABCDEFG', 'Password123'], 0)
+    #     insert_question_into_db(question, answers, correct_answer)
+    #     print("Question inserted successfully!")
+    # except Exception as e:
+    #     print("An error occurred: " + str(e))
 
 
     """
