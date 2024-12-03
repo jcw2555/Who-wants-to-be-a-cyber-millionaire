@@ -29,5 +29,5 @@ jobs:
     - name: Build and run services with Docker Compose
       working-directory: ./docker  # Set the working directory to where docker-compose.yml is located
       run: |
-        OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+        export OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}  # Export the secret from GitHub
         sudo docker-compose up -d
