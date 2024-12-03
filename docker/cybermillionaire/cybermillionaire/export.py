@@ -146,27 +146,7 @@ def K_8th(cursor):
     for row in result:
         game.append(row)
 
-#    # Gets the 1 Tier 4 question for the K-8th game
-#    sql_K_8th_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 4 ORDER BY rand() LIMIT 1;"
-#    result = run_sql(cursor, sql_K_8th_T4)
-#    #save everything as variables
-#    for row in result:
-#        game.append(row)
-
-#    # Gets the 1 Tier 5 question for the K-8th game
-#    sql_K_8th_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 5 ORDER BY rand() LIMIT 1;"
-#    result = run_sql(cursor, sql_K_8th_T5)
-#    #save everything as variables
-#    for row in result:
-#        game.append(row)
-
-    #remove this print later, just using for millionaireing now
-    #print("K-8th Selected!")
-    #print(game)
-
     return game
-    #TODO: Run method for JSON creation/formatting here
-    #Jump to error processing shit
 
 
 # This will run when a High School game is selected. It will gather all questions for the game
@@ -195,28 +175,7 @@ def HighSchool(cursor):
     for row in result:
         game.append(row)
 
-#    # Gets the 1 Tier 4 question for the High School game
-#    sql_HS_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 9 ORDER BY rand() LIMIT 1;"
-#    result = run_sql(cursor, sql_HS_T4)
-#    #save everything as variables 
-#    for row in result:
-#        game.append(row)
-
-#    # Gets the 1 Tier 5 question for the High School game
-#    sql_HS_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 10 ORDER BY rand() LIMIT 1;"
-#    result = run_sql(cursor, sql_HS_T5)
-#    #save everything as variables 
-#    for row in result:
-#        game.append(row)
-
-    #remove this print later, just using for testing now
-    #print("High School Selected!")
-    #print(game)
-
     return game
-
-    #TODO: Run method for JSON creation/formatting here
-    #Jump to error processing shit
 
 
 # This will run when a Non-Technical College game is selected. It will gather all questions for the game.
@@ -245,27 +204,7 @@ def College_NonTech(cursor):
     for row in result:
         game.append(row)
 
-#    # Gets the 1 Tier 4 question for the Non-Technical College game
-#    sql_nonTech_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 14 ORDER BY rand() LIMIT 1;"
-#    result = run_sql(cursor, sql_nonTech_T4)
-#    #save everything as variables
-#    for row in result:
-#        game.append(row)
-
-#    # Gets the 1 Tier 5 question for the Non-Technical College game
-#    sql_nonTech_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 15 ORDER BY rand() LIMIT 1;"
-#    result = run_sql(cursor, sql_nonTech_T5)
-#    #save everything as variables
-#    for row in result:
-#        game.append(row)
-
-    #remove this print later, just using for millionaireing now
-    #print("College Non-Tech Selected!")
-    #print(game)
-
     return game
-    #TODO: Run method for JSON creation/formatting here
-    #Jump to error processing shit
 
 
 # This will run when a Technical College game is selected. It will gather all questions for the game
@@ -293,28 +232,38 @@ def College_Tech(cursor):
     #save everything as variables
     for row in result:
         game.append(row)
-
-#    # Gets the 1 Tier 4 question for the Technical College game
-#    sql_Tech_T4 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 19 ORDER BY rand() LIMIT 1;"
-#    result = run_sql(cursor, sql_Tech_T4)
-#    #save everything as variables
-#    for row in result:
-#        game.append(row)
-
-    # Gets the 1 Tier 5 question for the Technical College game
-#    sql_Tech_T5 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Rank FROM millionaire WHERE Rank = 20 ORDER BY rand() LIMIT 1;"
-#    result = run_sql(cursor, sql_Tech_T5)
-#    #save everything as variables
-#    for row in result:
-#        game.append(row)
-
-    #remove this print later, just using for millionaireing now
-    #print("College Tech Selected!")
-    #print(game)
+    
     return game
 
-    #TODO: Run method for JSON creation/formatting here
-    #Jump to error processing shit
+
+# DYNAMIC
+
+def dynamic_K_8th(cursor):
+    game = []
+
+    # Gets the 5 easy questions for the K-8th game
+    sql_K_8th_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'easy' AND Level = 1 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_K_8th_T1)
+    for row in result:
+        game.append(row)
+
+    #save everything as variables
+        
+    # Gets the 5 medium questions for the K-8th game
+    sql_K_8th_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'medium' and Level = 1 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_K_8th_T2)
+    #save everything as variables
+    for row in result:
+        game.append(row)
+
+    # Gets the 5 hard questions for the K-8th game
+    sql_K_8th_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'hard' and Level = 1 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_K_8th_T3)
+    #save everything as variables
+    for row in result:
+        game.append(row)
+
+    return game
 
 
 #def main():
@@ -348,6 +297,18 @@ def export_questions(selection):
         game = College_NonTech(cursor)
 
     elif selection == '4':
+        game = College_Tech(cursor)
+
+    elif selection == 'dynamic-1':
+        game = dynamic_K_8th(cursor)
+
+    elif selection == 'dynamic-2':
+        game = HighSchool(cursor)
+
+    elif selection == 'dynamic-3':
+        game = College_NonTech(cursor)
+
+    elif selection == 'dynamic-4':
         game = College_Tech(cursor)
 
     else:

@@ -41,26 +41,25 @@ def start4(request):        #College + Technical Level
 
 # Dynamic views
 def dynamic_start1(request):  # Dynamic K-8 Level
-    #export('dynamic-1')
-    export('1')
+    export('dynamic-1')
     t = template.loader.get_template('game.html')
     html = t.render()
     return HttpResponse(html)
 
 def dynamic_start2(request):  # Dynamic High School Level
-    export('2')
+    export('dynamic-2')
     t = template.loader.get_template('game.html')
     html = t.render()
     return HttpResponse(html)
 
 def dynamic_start3(request):  # Dynamic College Level
-    export('3')
+    export('dynamic-3')
     t = template.loader.get_template('game.html')
     html = t.render()
     return HttpResponse(html)
 
 def dynamic_start4(request):  # Dynamic College + Technical Level
-    export('4')
+    export('dynamic-4')
     t = template.loader.get_template('game.html')
     html = t.render()
     return HttpResponse(html)
