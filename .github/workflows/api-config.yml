@@ -27,6 +27,7 @@ jobs:
 
     # Step 4: Build and run services with Docker Compose
     - name: Build and run services with Docker Compose
+      working-directory: ./docker  # Set the working directory to where docker-compose.yml is located
       run: |
         OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
         sudo docker-compose up -d
