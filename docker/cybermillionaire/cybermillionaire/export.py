@@ -246,7 +246,7 @@ def Dynamic_K_8th(cursor):
    # for i in range(0, 15):
     #    question_text = generation.generate_question("easy")
         # Parse the text and insert it into the database
-    #question_text = generation.generate_question("easy")
+    question_text1 = generation.generate_question("easy")
 
     question_text = """
     Question: Which of the following is a strong password?
