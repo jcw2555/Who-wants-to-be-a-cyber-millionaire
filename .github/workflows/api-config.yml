@@ -1,9 +1,9 @@
-name: Deploy Docker Compose Environment
+name: Deploy with Docker
 
 on:
-  push:
+  pull_request:
     branches:
-      - Django-branch  # Trigger on Django-branch
+      - Django-branch  # Trigger on pull_requests to Django-branch
 
 jobs:
   deploy:
@@ -14,20 +14,16 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
 
-    # Step 2: Set up Docker
-    - name: Set up Docker
-      uses: docker/setup-buildx-action@v2
-
-    # Step 3: Install Docker Compose
-    - name: Install Docker Compose
+    - name: Create .env file with secret
       run: |
-        sudo curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        sudo chmod +x /usr/local/bin/docker-compose
-        docker-compose --version
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
+      # This will write the secret to the .env file, which you can use in your local environment.
 
-    # Step 4: Build and run services with Docker Compose
-    - name: Build and run services with Docker Compose
-      working-directory: ./docker  # Set the working directory to where docker-compose.yml is located
+    - name: Add .env to .gitignore
       run: |
-        export OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}  # Export the secret from GitHub
-        sudo docker-compose up -d
+        echo ".env" >> .gitignore
+      # Adds .env to .gitignore to ensure it's not committed.
+
+   # - name: Verify .env is ignored
+   #   run: git status
+   #   # Verify that the .env file is indeed ignored by Git.
