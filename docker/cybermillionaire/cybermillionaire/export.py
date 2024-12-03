@@ -246,21 +246,22 @@ def Dynamic_K_8th(cursor):
    # for i in range(0, 15):
     #    question_text = generation.generate_question("easy")
         # Parse the text and insert it into the database
+    question_text = generation.generate_question("easy")
 
-    question_text = """
-    Question: Which of the following is a strong password?
+    # question_text = """
+    # Question: Which of the following is a strong password?
 
-    A. Password123
-    B. 123456
-    C. SunnyDay!
-    D. ABCDEFG
+    # A. Password123
+    # B. 123456
+    # C. SunnyDay!
+    # D. ABCDEFG
 
-    Correct Answer: A. Password123
-    """
+    # Correct Answer: A. Password123
+    # """
 
     try:
-        #question, answers, correct_answer = parse_question_and_answers(question_text)
-        question, answers, correct_answer = ('Which of the following is a strong password?',['Password123', '123456', 'SunnyDay!', 'ABCDEFG', 'Password123'], 0)
+        question, answers, correct_answer = parse_question_and_answers(question_text)
+        #question, answers, correct_answer = ('Which of the following is a strong password?',['Password123', '123456', 'SunnyDay!', 'ABCDEFG', 'Password123'], 0)
         insert_question_into_db(question, answers, correct_answer)
         print("Question inserted successfully!")
     except Exception as e:
