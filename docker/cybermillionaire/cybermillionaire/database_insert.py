@@ -13,7 +13,7 @@ def parse_question_and_answers(text):
 
     question = question_match.group(1)
     answers = [a[1] for a in answers_match]  # Remove A, B, C, D labels and keep the answer text
-    correct_answer = answers_match.index((correct_answer_match.group(1), correct_answer_match.group(2))) + 1  # Get the correct answer index (1-based)
+    correct_answer = answers_match.index((correct_answer_match.group(1), correct_answer_match.group(2))) # Get the correct answer index (1-based)
 
     return question, answers, correct_answer
 
