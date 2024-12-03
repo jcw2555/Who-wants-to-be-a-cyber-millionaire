@@ -23,4 +23,4 @@ jobs:
     - name: Build and run services with Docker Compose
       run: |
         OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
-        docker-compose up -d
+        sudo docker-compose up -d
