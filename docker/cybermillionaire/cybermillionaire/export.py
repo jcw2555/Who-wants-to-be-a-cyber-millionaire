@@ -2,8 +2,8 @@ import mysql.connector
 from mysql.connector import Error
 import json
 import sys
-#import dynamic_question_generation as generation
-#import database_insert
+import cybermillionaire.dynamic_question_generation as generation
+import cybermillionaire.database_insert
 
 # Executes all export functionality
 #class Export:
@@ -242,7 +242,7 @@ def College_Tech(cursor):
 # This will run when a dynamic primary school game is selected. It will gather all questions for the game.
 def Dynamic_K_8th(cursor):
     game = []
-    """
+    
     for i in range(0, 15):
         question_text = generation.generate_question("easy")
         # Parse the text and insert it into the database
@@ -276,7 +276,7 @@ def Dynamic_K_8th(cursor):
     #save everything as variables
     for row in result:
         game.append(row)
-
+    """
     return game
 
 # This will run when a dynamic secondary school game is selected. It will gather all questions for the game.
