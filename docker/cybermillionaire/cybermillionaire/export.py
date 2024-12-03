@@ -2,6 +2,8 @@ import mysql.connector
 from mysql.connector import Error
 import json
 import sys
+#import dynamic_question_generation as generation
+#import database_insert
 
 # Executes all export functionality
 #class Export:
@@ -240,6 +242,18 @@ def College_Tech(cursor):
 # This will run when a dynamic primary school game is selected. It will gather all questions for the game.
 def Dynamic_K_8th(cursor):
     game = []
+    """
+    for i in range(0, 15):
+        question_text = generation.generate_question("easy")
+        # Parse the text and insert it into the database
+        try:
+            question, answers, correct_answer = parse_question_and_answers(question_text)
+            insert_question_into_db(question, answers, correct_answer)
+            print("Question inserted successfully!")
+        except Exception as e:
+            print("An error occurred: " + str(e))
+
+    """
 
     # Gets the 5 easy questions for the K-8th game
     sql_K_8th_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'easy' AND Level = 1 ORDER BY rand() LIMIT 5;"

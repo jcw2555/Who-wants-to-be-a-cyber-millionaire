@@ -1,6 +1,5 @@
 from openai import OpenAI
 import random
-import sys
 
 # Bags of words for each level
 BAG_O_WORDS_PRIMARY = ['Passwords', 'Internet Safety', 'Cyberbullying', 'Social Media', 'Secure Websites', 'Hacking', 'Digital Footprints', 'Data', 'Phishing', 'Safe Downloading'] 
@@ -36,13 +35,13 @@ def api(BAG_O_WORDS, content, question_level):
     )
     return completion.choices[0].message.content # returns the content field from the message from the API
 
-def main():
-    level = "expert" # sys.argv[1] # change this depending on what level set you want to generate, or to utilize the caller_script
+def generate_question(level):
     BAG_O_WORDS = levels[level][0] # sets the correct BAG_O_WORDS for the specified level
     content = levels[level][1] # sets the correct content field for the specified level
     question_level = levels[level][2] # sets the correct question level field for the specified level
 
-    print(api(BAG_O_WORDS, content, question_level)) # prints the returned question to terminal
+    return api(BAG_O_WORDS, content, question_level)
 
 if __name__ == '__main__':
-    main()
+    level = "expert"  # Default level for direct execution
+    print(generate_question(level))
