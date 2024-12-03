@@ -237,8 +237,8 @@ def College_Tech(cursor):
 
 
 # DYNAMIC
-
-def dynamic_K_8th(cursor):
+# This will run when a dynamic primary school game is selected. It will gather all questions for the game.
+def Dynamic_K_8th(cursor):
     game = []
 
     # Gets the 5 easy questions for the K-8th game
@@ -265,6 +265,88 @@ def dynamic_K_8th(cursor):
 
     return game
 
+# This will run when a dynamic secondary school game is selected. It will gather all questions for the game.
+def Dynamic_HighSchool(cursor):
+    game = []
+
+    # Gets the 5 easy questions for the High School game
+    sql_HS_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'easy' AND Level = 2 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_HS_T1)
+    #save everything as variables 
+    for row in result:
+        game.append(row)
+
+    # Gets the 5 medium questions for the High School game
+    sql_HS_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'medium' AND Level = 2 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_HS_T2)
+    #save everything as variables 
+    for row in result:
+        game.append(row)
+
+    # Gets the 5 hard questions for the High School game
+    sql_HS_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'hard' AND Level = 2 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_HS_T3)
+    #save everything as variables 
+    for row in result:
+        game.append(row)
+
+    return game
+
+# This will run when a dynamic college game is selected. It will gather all questions for the game.
+def Dynamic_College_NonTech(cursor):
+    game = []
+
+    # Gets the 5 easy questions for the Non-Technical College game
+    sql_nonTech_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'easy' AND Level = 3 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_nonTech_T1)
+    #save everything as variables 
+    for row in result:
+        game.append(row)
+
+
+    # Gets the 5 medium questions for the Non-Technical College game
+    sql_nonTech_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'medium' AND Level = 3 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_nonTech_T2)
+    #save everything as variables
+    for row in result:
+        game.append(row)
+
+    # Gets the 5 hard questions for the Non-Technical College game
+    sql_nonTech_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'hard' AND Level = 3 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_nonTech_T3)
+    #save everything as variables
+    for row in result:
+        game.append(row)
+
+    return game
+
+# This will run when a dynamic expert game is selected. It will gather all questions for the game.
+def Dynamic_College_Tech(cursor):
+    game = []
+
+    # Gets the 5 easy questions for the Technical College game
+    sql_Tech_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'easy' AND Level = 4 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_Tech_T1)
+    #save everything as variables
+    for row in result:
+        game.append(row)
+
+
+    # Gets the 5 medium questions for the Technical College game
+    sql_Tech_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'medium' AND Level = 4 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_Tech_T2)
+    #save everything as variables
+    for row in result:
+        game.append(row)
+
+    # Gets the 5 hard questions for the Technical College game
+    sql_Tech_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'hard' AND Level = 4 ORDER BY rand() LIMIT 5;"
+    result = run_sql(cursor, sql_Tech_T3)
+    #save everything as variables
+    for row in result:
+        game.append(row)
+    
+    return game
 
 #def main():
 def export_questions(selection):
@@ -300,16 +382,16 @@ def export_questions(selection):
         game = College_Tech(cursor)
 
     elif selection == 'dynamic-1':
-        game = dynamic_K_8th(cursor)
+        game = Dynamic_K_8th(cursor)
 
     elif selection == 'dynamic-2':
-        game = HighSchool(cursor)
+        game = Dynamic_HighSchool(cursor)
 
     elif selection == 'dynamic-3':
-        game = College_NonTech(cursor)
+        game = Dynamic_College_NonTech(cursor)
 
     elif selection == 'dynamic-4':
-        game = College_Tech(cursor)
+        game = Dynamic_College_Tech(cursor)
 
     else:
         print("Invalid Level Selection!")
