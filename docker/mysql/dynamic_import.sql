@@ -40,8 +40,5 @@ CREATE TABLE `dynamic` (
 
 LOCK TABLES `dynamic` WRITE;
 /*!40000 ALTER TABLE `dynamic` DISABLE KEYS */;
-INSERT INTO `dynamic`
-VALUES
-("Which of the following is a strong password?", "Password123", "123456", "SunnyDay!", "ABCDEFG", 2);
 /*!40000 ALTER TABLE `dynamic` ENABLE KEYS */;
 UNLOCK TABLES;

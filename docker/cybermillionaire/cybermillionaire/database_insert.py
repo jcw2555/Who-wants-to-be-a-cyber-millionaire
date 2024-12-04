@@ -6,14 +6,17 @@ def parse_question_and_answers(text):
     # Regular expression to extract the question and answers
     question_match = re.search(r"Question: (.*?)\n", text)
     answers_match = re.findall(r"([A-D])\.\s([^\n]+)", text)  # Matches A. Answer text, B. Answer text, etc.
-    correct_answer_match = re.search(r"Correct Answer: (\w+)\.\s([^\n]+)", text)
+    correct_answer_match = re.search(r"Correct Answer: ([A-D])", text)  # Matches Correct Answer: A, B, C, or D
 
     if not question_match or not answers_match or not correct_answer_match:
         raise ValueError("Unable to parse the text correctly")
 
     question = question_match.group(1)
-    answers = [a[1] for a in answers_match]  # Remove A, B, C, D labels and keep the answer text
-    correct_answer = answers_match.index((correct_answer_match.group(1), correct_answer_match.group(2))) # Get the correct answer index (1-based)
+    answers = [a[1].strip() for a in answers_match]  # Extract answer texts and strip extra spaces
+    correct_letter = correct_answer_match.group(1)  # The correct letter (e.g., A, B, C, D)
+    
+    # Convert the correct letter (A-D) to a 0-based index
+    correct_answer = ord(correct_letter) - ord('A')
 
     return question, answers, correct_answer
 
@@ -58,23 +61,3 @@ def insert_question_into_db(question, answers, correct_answer):
     # Close the connection
     cursor.close()
     conn.close()
-
-# Sample text returned from the API
-text = """
-Question: Which of the following is a strong password?
-
-A. Password123
-B. 123456
-C. SunnyDay!
-D. ABCDEFG
-
-Correct Answer: A. Password123
-"""
-
-# Parse the text and insert it into the database
-try:
-    question, answers, correct_answer = parse_question_and_answers(text)
-    insert_question_into_db(question, answers, correct_answer)
-    print("Question inserted successfully!")
-except Exception as e:
-    print(f"An error occurred: {e}")

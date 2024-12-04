@@ -243,78 +243,23 @@ def College_Tech(cursor):
 def Dynamic_K_8th(cursor):
     game = []
     
-   # for i in range(0, 15):
-    #    question_text = generation.generate_question("easy")
-        # Parse the text and insert it into the database
+    for i in range(0, 15):
+        question_text = generation.generate_question("easy")
 
-    
-    question_text = generation.generate_question("easy")
+        try:
+            question, answers, correct_answer = insert.parse_question_and_answers(question_text)
+            insert.insert_question_into_db(question, answers, correct_answer)
+            print("Question inserted successfully!")
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
-    print(question_text)
-
-    # question_text = """
-    # Question: Which of the following is a strong password?
-
-    # A. Password123
-    # B. 123456
-    # C. SunnyDay!
-    # D. ABCDEFG
-
-    # Correct Answer: A. Password123
-    # """
-
-
-    # Redirect stdout to a file
-    sys.stdout = open('temp_test.txt', 'w')
-
-    try:
-        print("Attempting to parse question and answers...")
-        question, answers, correct_answer = insert.parse_question_and_answers(question_text)
-        print("Question and answers parsed successfully.")
-        
-        print("Attempting to insert question into database...")
-        insert.insert_question_into_db(question, answers, correct_answer)
-        
-        print("Question inserted successfully!")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-    # Optionally, restore stdout to the default (console) after the operation
-    sys.stdout = sys.__stdout__
-
-    # try:
-    #     question, answers, correct_answer = parse_question_and_answers(question_text)
-    #     #question, answers, correct_answer = ('Which of the following is a strong password?',['Password123', '123456', 'SunnyDay!', 'ABCDEFG', 'Password123'], 0)
-    #     insert_question_into_db(question, answers, correct_answer)
-    #     print("Question inserted successfully!")
-    # except Exception as e:
-    #     print("An error occurred: " + str(e))
-
-
-    """
-
-    # Gets the 5 easy questions for the K-8th game
-    sql_K_8th_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'easy' AND Level = 1 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_K_8th_T1)
+    # add questions from database to game
+    sql_dynamic_k8 = "SELECT * FROM dynamic LIMIT 15;"
+    result = run_sql(cursor, sql_dynamic_k8)
+    #save everything as variables 
     for row in result:
         game.append(row)
 
-    #save everything as variables
-        
-    # Gets the 5 medium questions for the K-8th game
-    sql_K_8th_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'medium' and Level = 1 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_K_8th_T2)
-    #save everything as variables
-    for row in result:
-        game.append(row)
-
-    # Gets the 5 hard questions for the K-8th game
-    sql_K_8th_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'hard' and Level = 1 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_K_8th_T3)
-    #save everything as variables
-    for row in result:
-        game.append(row)
-    """
     return game
 
 # This will run when a dynamic secondary school game is selected. It will gather all questions for the game.
