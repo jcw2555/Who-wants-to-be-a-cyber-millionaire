@@ -276,84 +276,79 @@ def Dynamic_K_8th(cursor):
 # This will run when a dynamic secondary school game is selected. It will gather all questions for the game.
 def Dynamic_HighSchool(cursor):
     game = []
+    
+    for i in range(0, 15):
+        question_text = generation.generate_question("medium")
 
-    # Gets the 5 easy questions for the High School game
-    sql_HS_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'easy' AND Level = 2 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_HS_T1)
+        try:
+            question, answers, correct_answer = insert.parse_question_and_answers(question_text)
+            insert.insert_question_into_db(question, answers, correct_answer)
+            print("Question inserted successfully!")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    # add questions from database to game
+    sql_dynamic_k8 = "SELECT * FROM dynamic LIMIT 15;"
+    result = run_sql(cursor, sql_dynamic_k8)
     #save everything as variables 
     for row in result:
         game.append(row)
 
-    # Gets the 5 medium questions for the High School game
-    sql_HS_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'medium' AND Level = 2 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_HS_T2)
-    #save everything as variables 
-    for row in result:
-        game.append(row)
-
-    # Gets the 5 hard questions for the High School game
-    sql_HS_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'hard' AND Level = 2 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_HS_T3)
-    #save everything as variables 
-    for row in result:
-        game.append(row)
+    # Clear the dynamic table
+    cursor.execute("TRUNCATE TABLE dynamic;")
 
     return game
 
 # This will run when a dynamic college game is selected. It will gather all questions for the game.
 def Dynamic_College_NonTech(cursor):
     game = []
+    
+    for i in range(0, 15):
+        question_text = generation.generate_question("hard")
 
-    # Gets the 5 easy questions for the Non-Technical College game
-    sql_nonTech_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'easy' AND Level = 3 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_nonTech_T1)
+        try:
+            question, answers, correct_answer = insert.parse_question_and_answers(question_text)
+            insert.insert_question_into_db(question, answers, correct_answer)
+            print("Question inserted successfully!")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    # add questions from database to game
+    sql_dynamic_k8 = "SELECT * FROM dynamic LIMIT 15;"
+    result = run_sql(cursor, sql_dynamic_k8)
     #save everything as variables 
     for row in result:
         game.append(row)
 
-
-    # Gets the 5 medium questions for the Non-Technical College game
-    sql_nonTech_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'medium' AND Level = 3 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_nonTech_T2)
-    #save everything as variables
-    for row in result:
-        game.append(row)
-
-    # Gets the 5 hard questions for the Non-Technical College game
-    sql_nonTech_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'hard' AND Level = 3 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_nonTech_T3)
-    #save everything as variables
-    for row in result:
-        game.append(row)
+    # Clear the dynamic table
+    cursor.execute("TRUNCATE TABLE dynamic;")
 
     return game
 
 # This will run when a dynamic expert game is selected. It will gather all questions for the game.
 def Dynamic_College_Tech(cursor):
     game = []
-
-    # Gets the 5 easy questions for the Technical College game
-    sql_Tech_T1 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'easy' AND Level = 4 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_Tech_T1)
-    #save everything as variables
-    for row in result:
-        game.append(row)
-
-
-    # Gets the 5 medium questions for the Technical College game
-    sql_Tech_T2 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'medium' AND Level = 4 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_Tech_T2)
-    #save everything as variables
-    for row in result:
-        game.append(row)
-
-    # Gets the 5 hard questions for the Technical College game
-    sql_Tech_T3 = "select Question, Ans1, Ans2, Ans3, Ans4, Correct, Difficulty, Level FROM millionaire WHERE Difficulty = 'hard' AND Level = 4 ORDER BY rand() LIMIT 5;"
-    result = run_sql(cursor, sql_Tech_T3)
-    #save everything as variables
-    for row in result:
-        game.append(row)
     
+    for i in range(0, 15):
+        question_text = generation.generate_question("expert")
+
+        try:
+            question, answers, correct_answer = insert.parse_question_and_answers(question_text)
+            insert.insert_question_into_db(question, answers, correct_answer)
+            print("Question inserted successfully!")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    # add questions from database to game
+    sql_dynamic_k8 = "SELECT * FROM dynamic LIMIT 15;"
+    result = run_sql(cursor, sql_dynamic_k8)
+    #save everything as variables 
+    for row in result:
+        game.append(row)
+
+    # Clear the dynamic table
+    cursor.execute("TRUNCATE TABLE dynamic;")
+
     return game
 
 #def main():
