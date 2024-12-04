@@ -87,6 +87,14 @@ def generate_json(game):
     with open('static/js/millionaire.json','w') as outfile:
         json.dump(json_file, outfile)
 
+    # # Clear the dynamic table
+    # try:
+    #     cursor.execute("DELETE FROM dynamic;")  # Removes all rows from the table
+    #     cursor.connection.commit()  # Commit the transaction
+    #     print("Dynamic table cleared successfully!")
+    # except Exception as e:
+    #     print(f"An error occurred while clearing the table: {e}")
+
 """ 
         data['games'].append({
             #Need to include "questions" for all questions
@@ -239,7 +247,7 @@ def College_Tech(cursor):
 
 
 # DYNAMIC
-# This will run when a dynamic primary school game is selected. It will gather all questions for the game.
+# This will run when a dynamic primary school game is selected. It will gather all questions for the game and then empty the dynamic table.
 def Dynamic_K_8th(cursor):
     game = []
     
@@ -259,6 +267,9 @@ def Dynamic_K_8th(cursor):
     #save everything as variables 
     for row in result:
         game.append(row)
+
+    # Clear the dynamic table
+    cursor.execute("TRUNCATE TABLE dynamic;")
 
     return game
 
@@ -399,5 +410,3 @@ def export_questions(selection):
         connection.close()
         cursor.close()
         print("MySQL connection is closed")
-
-#main()
