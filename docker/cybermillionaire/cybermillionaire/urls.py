@@ -20,16 +20,16 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^k-8', views.start1, name='k8'),  #K-8th
-    url(r'^high-school', views.start2, name='hs'),  #HS
-    url(r'^college', views.start3, name='college'),  #college
-    url(r'^college-tech', views.start4, name='tech'),  #college+ tech
+    url(r'^primary-school', views.start1, name='primary-school'),  # Static Primary School
+    url(r'^secondary-school', views.start2, name='secondary-school'),  # Static Secondary School
+    url(r'^college', views.start3, name='college'),  # Static College
+    url(r'^expert', views.start4, name='expert'),  # Static Expert
 
     # Add dynamic URL patterns
-    url(r'^dynamic-k-8', views.dynamic_start1, name='dynamic-k8'),  # Dynamic K-8th
-    url(r'^dynamic-high-school', views.dynamic_start2, name='dynamic-hs'),  # Dynamic High School
+    url(r'^dynamic-primary-school', views.dynamic_start1, name='dynamic-primary-school'),  # Dynamic Primary School
+    url(r'^dynamic-secondary-school', views.dynamic_start2, name='dynamic-secondary-school'),  # Dynamic Secondary School
     url(r'^dynamic-college', views.dynamic_start3, name='dynamic-college'),  # Dynamic College
-    url(r'^dynamic-college-tech', views.dynamic_start4, name='dynamic-tech'),  # Dynamic College + Tech
+    url(r'^dynamic-expert', views.dynamic_start4, name='dynamic-expert'),  # Dynamic Expert
     
     url(r'', views.index, name='start-page'),
     ]
