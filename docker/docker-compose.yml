@@ -1,21 +1,21 @@
 version: '3'
 services:
 
-
     gunicorn:
         build: ./
         ports:
             - "8000:8000"
         volumes:
             - ./cybermillionaire:/cybermillionaire
+            - ../.env:/.env
         networks:
             - nginx_network
             - db_network
         depends_on:
             - db
-        environment:
-           OPENAI_API_KEY: "sk-svcacct-EDG_w-BQGpTfMLf7CHBA-1Uoj2vIoXQpJLMVSNxs7Rf16r_lnqaCf7-9TV-tH8hZogKT3BlbkFJUKsX6XSGAr6s1Pw-wljTYF97wUjx_uA_ycdA-t0jUqMze5UtwdAhUuGVy0yZPV-ZjwAA"
-
+        env_file:
+            - path: ../.env
+              required: true
 
     nginx:
         build: ./nginx
