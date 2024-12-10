@@ -13,7 +13,7 @@ services:
             - db_network
         depends_on:
             - db
-        env_file: ../.env
+        env_file: ../api_config.env
 
     nginx:
         build: ./nginx
