@@ -7,7 +7,6 @@ services:
             - "8000:8000"
         volumes:
             - ./cybermillionaire:/cybermillionaire
-            - ../.env:/.env
         networks:
             - nginx_network
             - db_network
